@@ -1,4 +1,5 @@
-from bose import *
+from bose import BaseTask,  Profile, TaskConfig, BrowserConfig, BoseDriver
+
 
 class VisitOutlookAccountsTask(BaseTask):
     def get_data(self):

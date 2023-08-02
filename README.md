@@ -1,192 +1,100 @@
-<p align="center">
-  <img src="https://raw.githubusercontent.com/omkarcloud/outlook-account-generator/master/images/outlook.png" alt="outlook" />
-</p>
-  <div align="center" style="margin-top: 0;">
-  <h1>✨ Outlook Account Generator 🤖</h1>
-  <p>💦 Enjoy the Rain of Outlook Accounts 💦</p>
-</div>
-<em>
-  <h5 align="center">(Programming Language - Python 3)</h5>
-</em>
-<p align="center">
-  <a href="#">
-    <img alt="outlook-account-generator forks" src="https://img.shields.io/github/forks/omkarcloud/outlook-account-generator?style=for-the-badge" />
-  </a>
-  <a href="#">
-    <img alt="Repo stars" src="https://img.shields.io/github/stars/omkarcloud/outlook-account-generator?style=for-the-badge&color=yellow" />
-  </a>
-  <a href="#">
-    <img alt="outlook-account-generator License" src="https://img.shields.io/github/license/omkarcloud/outlook-account-generator?color=orange&style=for-the-badge" />
-  </a>
-  <a href="https://github.com/omkarcloud/outlook-account-generator/issues">
-    <img alt="issues" src="https://img.shields.io/github/issues/omkarcloud/outlook-account-generator?color=purple&style=for-the-badge" />
-  </a>
-</p>
-<p align="center">
-  <img src="https://views.whatilearened.today/views/github/omkarcloud/outlook-account-generator.svg" width="80px" height="28px" alt="View" />
-</p>
+# Usage
 
+-   Create and ENV!!
+    ```powershell
+    python3 -m venv env
+    python3 -m venv [env_name]
+    ```
+-   Activate the env while in the directory where the project is
+    ```powershell
+    source [env_name]/bin/activate
+    ```
+-   Install packages from the requirements.txt
+    ```powershell
+    pip3 install -r requirements.txt
+    ```
+-   navigate to [.src/config.py](./src/config.py) to change the number of accounts
 
----
+    ```python
+    config = {
+      "number_of_accounts_to_generate": 10
+    }
+    ```
 
-🌟 Create Multiple Outlook Accounts with Ease! 🤖
+### now for the hard part 🙂
 
-## 🌟 Overview
+-   navigate to
 
-Welcome to the Outlook Account Generator, written to generate Real Looking Outlook Accounts easily.
+    ```powershell
+    [env_name]/lib/python3.10/site-packages/bose/download_driver.py
+    ```
 
-If you've experienced disappointments with other outlook account generator bots, **facing failures**, **crashes** and **detection** from Microsoft, don't worry! Your search for a reliable Outlook Account Generator Bot ends right here.
+    and update the function `def download_driver():` to the following
 
-This Outlook Account Generator well maintained, operates at a slow humane pace, generating accounts with names and usernames that resemble real users, resulting in the bot remaining undetected by Microsoft and leading to successful creation of Outlook Accounts.
+    ```python
+    def download_driver():
+      build_dir = "build"
 
-Below is an example of what the Generated Account looks like:
+      if not os.path.exists(build_dir):
+          os.makedirs(build_dir)
 
-![Profiles](https://raw.githubusercontent.com/omkarcloud/outlook-account-generator/master/images/profiles.png)
+      major_version = get_major_version(get_chrome_version())
+      print(f'[INFO] Downloading Driver for Chrome Version {major_version} in {build_dir}/ directory. This is a one-time process. Download in progress...')
 
+      download_driver_in_path()
+      move_driver()
+    ```
 
-## ✨ Benefits of Outlook Account Generator
+that should fix any errors you might have concerning downloading of a driver for `chrome version 115` or above
 
-🌍 Generate Realistic Account Details: Obtain authentic names, usernames, and passwords based on your country of residence.
+### download a chrome driver
 
-💾 Save Account Details as JSON: Every created account is conveniently saved in JSON format, making it easy to access and manage the account information.
+Note: `The chrome driver version you download should be the same as your chrome version` which you can check here [chrome://settings/help](chrome://settings/help)
 
-🔒 Anti Bot Detection: The bot incorporates measures to bypass detection, ensuring a smooth account creation process.
+My chrome version is `115.0.5790.170` and i use a Linux so i head on to here: https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/115.0.5790.170/linux64/chromedriver-linux64.zip
+to download a driver
 
-🖥️ Chrome Profile Storage: Each created account is saved as a profile, enabling you to access your Outlook users anytime without the need for login credentials.
+After you're done hopefully inside build create a folder named the `Major version` of your chrome in my case it would be `build/115` then add the chromedriver to it making it `build/115/chromedriver`
 
-
-## 🚀 Getting Started
-
-_If you are not a techy person or don't know how to use git. You can follow [this video](https://www.youtube.com/watch?v=RwCWcaKBahI) to make bot run._
-
-Let's get started creating your first first Outlook Accounts within 5 minutes by following these simple steps
-
-1️⃣ Clone the Magic 🧙‍♀️:
+That's all, note this is if you encounter an issue like this
 
 ```shell
-git clone https://github.com/omkarcloud/outlook-account-generator
-cd outlook-account-generator
+(env) rafe@shadrach:~/codes/git codes/outlook-account-generator$ python main.py
+Task Started
+[INFO] Downloading Driver for Chrome Version 115 in build/ directory. This is a one-time process. Download in progress...
+WARNING:root:Can not find chromedriver for currently installed chrome version.
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/shutil.py", line 815, in move
+    os.rename(src, real_dst)
+FileNotFoundError: [Errno 2] No such file or directory: 'build/115/chromedriver' -> 'build/chromedriver'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/rafe/codes/git codes/outlook-account-generator/main.py", line 5, in <module>
+    launch_tasks(*tasks_to_be_run)
+  File "/home/rafe/codes/git codes/outlook-account-generator/env/lib/python3.10/site-packages/bose/launch_tasks.py", line 54, in launch_tasks
+    current_output = task.begin_task(current_data, task_config)
+  File "/home/rafe/codes/git codes/outlook-account-generator/env/lib/python3.10/site-packages/bose/base_task.py", line 214, in begin_task
+    final = run_task(False, 0)
+  File "/home/rafe/codes/git codes/outlook-account-generator/env/lib/python3.10/site-packages/bose/base_task.py", line 155, in run_task
+    create_directories(self.task_path)
+  File "/home/rafe/codes/git codes/outlook-account-generator/env/lib/python3.10/site-packages/bose/base_task.py", line 99, in create_directories
+    _download_driver()
+  File "/home/rafe/codes/git codes/outlook-account-generator/env/lib/python3.10/site-packages/bose/base_task.py", line 34, in _download_driver
+    download_driver()
+  File "/home/rafe/codes/git codes/outlook-account-generator/env/lib/python3.10/site-packages/bose/download_driver.py", line 50, in download_driver
+    move_driver()
+  File "/home/rafe/codes/git codes/outlook-account-generator/env/lib/python3.10/site-packages/bose/download_driver.py", line 39, in move_driver
+    move_chromedriver()
+  File "/home/rafe/codes/git codes/outlook-account-generator/env/lib/python3.10/site-packages/bose/download_driver.py", line 38, in move_chromedriver
+    shutil.move(src_path, dest_path)
+  File "/usr/lib/python3.10/shutil.py", line 835, in move
+    copy_function(src, real_dst)
+  File "/usr/lib/python3.10/shutil.py", line 434, in copy2
+    copyfile(src, dst, follow_symlinks=follow_symlinks)
+  File "/usr/lib/python3.10/shutil.py", line 254, in copyfile
+    with open(src, 'rb') as fsrc:
+FileNotFoundError: [Errno 2] No such file or directory: 'build/115/chromedriver'
+
 ```
-
-2️⃣ Install Dependencies 📦:
-
-```shell
-python -m pip install -r requirements.txt
-```
-
-3️⃣ Let the Rain of Outlook Accounts Begin 😎:
-
-```shell
-python main.py
-```
-
-The bot will take care of filling in the required details automatically. You will only be prompted to solve the captcha manually.
-
-By manually solving the captcha, there's no need to purchase additional captcha-solving services or proxies to run the bot.
-
-![Profiles](https://raw.githubusercontent.com/omkarcloud/outlook-account-generator/master/images/solve-captcha.png)
-
-_Once Bot is Completed Running. The Accounts will be saved in `profiles.json`_
-
-## 🎥 Video Demo
-
-Watch this video to see the bot in action!
-
-[![Outlook Account Generator](https://raw.githubusercontent.com/omkarcloud/outlook-account-generator/master/images/youtube-video.png)](https://www.youtube.com/watch?v=RwCWcaKBahI)
-
-## 🤔 FAQs
-
-### ❓ It is generating only 3 accounts. How can I generate more than 3 accounts?
-
-Open `src/config.py` and specify the number of accounts you want to generate. For example, to generate 100 accounts, use the following code:
-
-```python
-config = {
-    "number_of_accounts_to_generate": 100
-}
-```
-
-### ❓ Why are you not using proxies and captcha-solving services to solve captchas?
-
-I attempted to solve the captcha using 2captcha, but unfortunately, it proved to be unsolvable. This issue arises because the location where the account is being created differs from the location where the captcha is being solved. The captcha system detects this mismatch, causing the captcha prompt to appear repeatedly in a loop.
-
-The bot will automatically prompt you when a captcha needs to be solved.
-
-### ❓ Why am I prompted to change my IP address?
-
-After using the bot to create a few accounts and becoming familiar with how it works, the bot will prompt you to change the IP address after each account creation.
-
-![Change Ip](https://raw.githubusercontent.com/omkarcloud/outlook-account-generator/master/images/change-ip.png)
-
-The reason we want you to change your IP is that if you create multiple accounts with a single IP, Microsoft will notice that multiple accounts were created from the same IP address. As a result, Microsoft may suspend these accounts after a few days.
-
-To protect your account from being suspended, we prompt you to change the IP address, ensuring that a single account is created from a single IP.
-
-Changing your IP is an easy process. To learn about multiple methods to change your IP address, visit this [link](https://www.omkar.cloud/bose/docs/guides/change-ip/#methods-for-changing-ip)
-
-Furthermore, one of the most effective methods for changing the IP is the **Enable and Disable Airplane Mode** technique outlined below:
-
-1. Connect your PC to a mobile hotspot.
-2. On your mobile device, turn airplane mode on and off.
-3. Now, turn the hotspot on again.
-4. You will get a new IP assigned.
-
-### ❓ Can I buy Outlook accounts from you?
-
-In addition to the free Outlook Account Generator Bot, we also offer fairly priced Outlook Accounts to streamline the process of account creation and save you valuable development time.
-
-These accounts are mature, uses humane name and email and are trusted by hundreds of peope, enabling people to bypass the hassle of generating Outlook accounts manually.
-
-Save your Time and buy Outlook Accounts here [here](https://www.omkar.cloud/l/buy-outlook-accounts/)
-
-### ❓ The code is well-structured and organized. Most Selenium codebases are messy. How did you do it?
-
-I use the Bose Framework, a Bot Development Framework that greatly simplifies the process of creating bots.
-
-The Outlook Account Generator uses Bose to:
-
-1. Generate account details
-2. Maintain code structure
-3. Enable running the bot multiple times
-4. Prompt to change IP
-5. Save account details in profiles
-6. Incorporate anti-bot detection features
-7. Utilize the enhanced Selenium Driver to reduce code.
-
-Without Bose Framework, it would be 2x more harder to make this Outlook Account Generator.
-
-You can see `outlook_sign_up_task.py` to understand the simplicity Bose Brings.
-
-Explore the Bose Framework [here](https://www.omkar.cloud/bose/).
-
-### ❓ What is the purpose of the "visit_outlook_accounts_task"?
-
-After creating each account, it is saved as a profile.
-
-We use the `visit_outlook_accounts_task` to open each Outlook account in the browser. To use the `visit_outlook_accounts_task`, please open the `__init__.py` file and paste the following code:
-
-```python
-from .visit_outlook_accounts_task import VisitOutlookAccountsTask
-from .outlook_sign_up_task import OutlookSignUpTask
-
-tasks_to_be_run = [
-        VisitOutlookAccountsTask,
-        # OutlookSignUpTask,
-]
-```
-
-### ❓ How can I thank you?
-
-Star ⭐ the repository.
-
-Your star will send me a Telegram Notification, and it will bring a smile to my face :)
-
-### ❓ I'm interested in creating more bots. Can you assist me?
-
-Certainly! As a professional scraper, I'd be delighted to discuss your requirements further. Feel free to reach out to me at chetan@omkar.cloud.
-
-## _PS: I have a great suggestion for you. You probably use Outlook accounts to log into some website and automate actions, Isn't it? I recommend using the Bose Framework for writing your automation code directly in this repository. This will really save you a large chunk of development time._
-
----
-
-## Love It? Star It! ⭐
