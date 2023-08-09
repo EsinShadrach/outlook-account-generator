@@ -62,7 +62,7 @@ class OutlookSignUpTask(BaseTask):
             if driver.get_element_by_id('MemberNameError', Wait.SHORT) is not None:
                 print(driver.get_element_by_id(
                     'MemberNameError', Wait.SHORT).text)
-                print("Username is already taken. So this account was not craeated.")
+                print("Username is already taken. So this account was not created.")
                 raise Exception()
 
             driver.short_random_sleep()
@@ -151,7 +151,7 @@ class OutlookSignUpTask(BaseTask):
         driver.organic_get("https://signup.live.com/")
 
         if is_bot_detected():
-            print('Bot is Blocked by Microsoft. Possibly because Microsoft has flagged the IP. You can try runnning the Bot after few minutes or you change your IP address to bypass the IP Ban.')
+            print('Bot is Blocked by Microsoft. Possibly because Microsoft has flagged the IP. You can try running the Bot after few minutes or you change your IP address to bypass the IP Ban.')
             driver.long_random_sleep()
             return
 
